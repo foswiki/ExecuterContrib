@@ -41,6 +41,7 @@ sub Send {
     $smtp->data();
     $smtp->datasend("To: $to\n");
     $smtp->datasend("Subject: $subject\n");
+    $smtp->datasend("Auto-Submitted: auto-generated\n");
     $smtp->datasend("\n");
     $smtp->datasend("$body\n");
     $smtp->dataend();
@@ -80,6 +81,7 @@ sub SendMultipart {
 
     #$self->datasend("Cc: $ccString\n") if ($ccString);
     $smtp->datasend("Subject: $subject\n");
+    $smtp->datasend("Auto-Submitted: auto-generated\n");
     $smtp->datasend("MIME-Version: 1.0\n");
     $smtp->datasend( sprintf "Content-Type: multipart/mixed; BOUNDARY=\"%s\"\n",
         $boundary );
